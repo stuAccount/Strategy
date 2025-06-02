@@ -1,4 +1,4 @@
-package com.stuAccount.Strategy;
+package com.stuAccount.Strategy.todolist;
 
 public class ToDo {
     private Long id;

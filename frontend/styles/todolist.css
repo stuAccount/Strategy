@@ -33,6 +33,10 @@ body {
   margin: 0;
 }
 
+.global-nav-submenu-overlay {
+  color: var(--darkblue);
+}
+
 .center-container {
   background: var(--white);
   padding: 2rem 2.5rem;

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Assisted Development Workflow for High-Quality Code</title>
+    <link rel="stylesheet" href="ai-development.css" />
+  </head>
+  <body>
+    <div>
+      <button type="button" class="back-btn" onclick="window.history.back()">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="16" cy="16" r="16" fill="#F0F0F0" />
+          <path
+            d="M18 10L12 16L18 22"
+            stroke="#333"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+    <main class="container">
+      <header>
+        <h1>AI-Assisted Development Workflow for High-Quality Code</h1>
+      </header>
+
+      <div class="intro">
+        <p>
+          This workflow helps you use AI to build clean, maintainable, and
+          scalable software, focusing on quality and developer well-being.
+          <a
+            href="https://www.reddit.com/r/LocalLLaMA/comments/1cvw3s5/my_personal_guide_for_developing_software_with_ai/"
+            >source</a
+          >
+        </p>
+      </div>
+
+      <nav class="toc" aria-label="Table of Contents">
+        <strong>Contents</strong>
+        <ul>
+          <li><a href="#principles">General Principles</a></li>
+          <li><a href="#architecture">Phase 1: Architecture Design</a></li>
+          <li><a href="#coding">Phase 2: Coding Workflow</a></li>
+          <li><a href="#efficiency">Notes on Time and Efficiency</a></li>
+          <li><a href="#limitations">Limitations</a></li>
+        </ul>
+      </nav>
+
+      <section id="principles">
+        <hr />
+        <p>
+          This is a practical workflow designed to use AI effectively in
+          building clean, maintainable, and scalable software systems. The focus
+          is not on speed alone, but on producing code that meets a high
+          standard while conserving developer mental energy.
+        </p>
+        <hr />
+
+        <h2>General Principles</h2>
+        <ol>
+          <li>
+            <strong>Minimize Context Length:</strong>
+            Most LLMs degrade in quality with longer contexts. Start fresh chats
+            for new topics. Reuse context only when necessary, and edit prior
+            messages to pivot the AI’s direction.
+          </li>
+          <li>
+            <strong>Leverage Critical Review from AI:</strong>
+            When asking AI to review code, frame it as:<br />
+            <em
+              >“I gave the following requirements to another AI. Here is the
+              code it returned. Please critique and refactor as needed.”</em
+            ><br />
+            This encourages objectivity. Avoid saying “you wrote this” or “I
+            wrote this” — AIs tend to be overly agreeable or defensive in those
+            cases.
+          </li>
+          <li>
+            <strong>Optimize for Mental Energy, Not Just Time:</strong>
+            Delegate effort-heavy tasks to AI so the developer can focus on
+            design and review. Let AI iterate quickly and cheaply before deeper
+            manual inspection.
+          </li>
+          <li>
+            <strong>Treat AI as a Junior Developer:</strong>
+            Never use AI without validation. Review all outputs as you would
+            from a junior teammate — inspect for bugs, poor design, and
+            non-idiomatic patterns.
+          </li>
+          <li>
+            <strong>Use Multiple Models When Possible:</strong>
+            Use two different AIs to generate and cross-review code. Different
+            LLMs catch different flaws due to varied training and reasoning
+            patterns.
+          </li>
+        </ol>
+        <hr />
+      </section>
+
+      <section id="architecture">
+        <h2>Phase 1: Architecture Design (Human-Driven)</h2>
+        <ul>
+          <li>
+            <strong>Project Description & Requirements:</strong>
+            Clear, repeatable summary of the project’s goals and features.
+          </li>
+          <li>
+            <strong>Definition of “Done”:</strong>
+            A strict scope to avoid feature creep.
+          </li>
+          <li>
+            <strong>Component Layout:</strong>
+            Modules, services, or classes and their responsibilities.
+          </li>
+          <li>
+            <strong>High-Level Method Contracts:</strong>
+            <em
+              >e.g., FileManager.read_file(file_name) vs
+              read_file(file_path).</em
+            >
+            Define method names, expected inputs, and outputs.
+          </li>
+        </ul>
+        <p>
+          AI may be used for brainstorming or breaking through blocks, but final
+          architecture should be written and fully understood by the developer.
+        </p>
+        <hr />
+      </section>
+
+      <section id="coding">
+        <h2>Phase 2: Coding Workflow</h2>
+        <ol>
+          <li>
+            <strong>Step 1: Pick a Feature</strong><br />
+            Choose one part of the architecture to implement.
+          </li>
+          <li>
+            <strong>Step 2: Prompt AI #1</strong><br />
+            Include:
+            <ul>
+              <li>Project requirements (from Phase 1)</li>
+              <li>Class/module structure</li>
+              <li>Method names</li>
+              <li>Expectations and openness to alternatives</li>
+            </ul>
+            <div class="note">
+              <strong>Example prompt:</strong><br />
+              <em>
+                “Please write Python code to read from a file and display its
+                contents. Use a module file_utilities with a class FileManager
+                and a method read_file(file_name). Also use a display_utilities
+                module with display_contents_of_file() that prints the result.
+                Critique and provide alternative ideas if any.”
+              </em>
+            </div>
+          </li>
+          <li>
+            <strong>Step 3: Review with AI #1 (New Chat)</strong><br />
+            Copy the prompt and code into a fresh session. Ask:<br />
+            <em>“Another AI wrote this. Please critique and refactor it.”</em>
+          </li>
+          <li>
+            <strong>Step 4: Cross-Review with AI #2</strong><br />
+            Paste the same prompt and code into a different model. Repeat the
+            review request.
+          </li>
+          <li>
+            <strong>Step 5: Human Code Review</strong><br />
+            Manually evaluate the code:
+            <ul>
+              <li>Look for bugs, code smells, unnecessary complexity</li>
+              <li>Rename variables/methods for clarity</li>
+              <li>Ensure adherence to your coding style</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Step 6: Repeat if Necessary</strong><br />
+            If the quality isn’t sufficient, loop back to Step 2 with updated
+            feedback.
+          </li>
+        </ol>
+        <hr />
+      </section>
+
+      <section id="efficiency">
+        <h2>Notes on Time and Efficiency</h2>
+        <ul>
+          <li>Steps 2–4: ~5 minutes</li>
+          <li>Step 5: ~10–20 minutes depending on complexity</li>
+          <li>Full loop: ~20–60 minutes per feature</li>
+        </ul>
+        <p>
+          This method significantly reduces the mental overhead of coding after
+          long work hours while maintaining high code quality.
+        </p>
+        <hr />
+      </section>
+
+      <section id="limitations">
+        <h2>Limitations</h2>
+        <ul>
+          <li>
+            <strong>AI Struggle with Large Contexts:</strong>
+            Complex multi-class bugs or workflows spanning many components may
+            exceed context windows, requiring full human debugging.
+          </li>
+          <li>
+            <strong>Not for All Scenarios:</strong>
+            For dynamic debugging, performance profiling, or systems design, AI
+            is often less effective.
+          </li>
+        </ul>
+      </section>
+      <footer>&copy; 2025 AI-Assisted Workflow Guide</footer>
+    </main>
+  </body>
+</html>

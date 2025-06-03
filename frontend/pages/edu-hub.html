@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edu-Hub</title>
+    <link rel="stylesheet" href="../styles/edu-hub.css" />
+    <link rel="stylesheet" href="../styles/global-nav-submenu.css" />
+  </head>
+  <body>
+    <div class="main-content">
+      <div class="tab-bar-container">
+        <div class="tab-bar" id="categoryTabs">
+          <span
+            class="search-icon"
+            tabindex="0"
+            role="button"
+            aria-label="Search"
+            onclick="openSearch()"
+          >
+            <!-- Simple SVG search icon -->
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="9" cy="9" r="7" stroke="#fff" stroke-width="2" />
+              <line
+                x1="14.4142"
+                y1="14"
+                x2="18"
+                y2="17.5858"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <!-- Tabs will be injected here -->
+        </div>
+      </div>
+      <div class="list" id="courseList"></div>
+      <div class="list" id="episodeList"></div>
+      <div class="video-player" id="videoPlayer"></div>
+    </div>
+
+    <script src="../scripts/global-nav-submenu.js"></script>
+    <script src="../scripts/edu-hub.js"></script>
+    <script>
+      fetch("../components/global-nav-submenu.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.body.insertAdjacentHTML("afterbegin", html);
+          setupGlobalNavSubmenu();
+        });
+    </script>
+  </body>
+</html>

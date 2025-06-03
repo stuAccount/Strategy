@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./styles/todolist.css" />
+    <link rel="stylesheet" href="../styles/todolist.css" />
+    <link rel="stylesheet" href="../styles/global-nav-submenu.css" />
   </head>
   <body>
     <main class="center-container">
@@ -23,6 +24,15 @@
       </div>
       <hr />
     </main>
-    <script src="./scripts/todolist.js"></script>
+    <script src="../scripts/todolist.js"></script>
+    <script src="../scripts/global-nav-submenu.js"></script>
+    <script>
+      fetch("../components/global-nav-submenu.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.body.insertAdjacentHTML("afterbegin", html);
+          setupGlobalNavSubmenu();
+        });
+    </script>
   </body>
 </html>

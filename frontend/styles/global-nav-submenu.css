@@ -1,0 +1,73 @@
+/* Glass overlay and menu */
+.global-nav-submenu-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1000;
+  display: none;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.global-nav-submenu {
+  max-width: 400px;
+  margin: 4em auto;
+  background: var(--global-nav-submenu-bg);
+  border-radius: 2em;
+  padding: 2em;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.global-nav-submenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.global-nav-submenu li {
+  font-size: 1.5em;
+  margin: 1em 0;
+  color: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.global-nav-submenu a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-btn {
+  position: fixed;
+  color: inherit;
+  top: 1em;
+  left: 1em;
+  z-index: 1100;
+  font-size: 2em;
+  background: var(--apple-light);
+  border: none;
+  border-radius: 1em;
+  padding: 0.2em 0.7em;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: var(--apple-light);
+  cursor: pointer;
+}
